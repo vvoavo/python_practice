@@ -120,8 +120,13 @@ def colFromId(tower_id):
 def towerOfHanoi():
 
     isGameSolved = False
+    moveCount = 0
     while not isGameSolved:
+        print("/--------------------------------------------------------\\")
+        print("[=====================TOWER=OF=HANOI=====================]")
+        print("\                                                        /")
         printTowers()
+        print(f"Moves: {moveCount}")
         input = playerInput()
 
         col_from = colFromId(input[0])
@@ -129,9 +134,11 @@ def towerOfHanoi():
 
         if not moveDisk(col_from, col_to):
             print("failed to move disk")
+        else:
+            moveCount += 1
 
         if isWin():
-            print("Cogtatulations🎉🎉🎉")
+            print(f"Cogtatulations🎉🎉🎉\nYou won in {moveCount} moves")
             return
 
         os.system("cls")
