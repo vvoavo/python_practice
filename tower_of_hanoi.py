@@ -1,3 +1,6 @@
+import os
+
+
 DISK_AMOUNT = 5
 TOWER_HEIGHT = DISK_AMOUNT + 1
 SOLVED_COL = [(DISK_AMOUNT) - n for n in range(TOWER_HEIGHT)]
@@ -98,6 +101,10 @@ def playerInput():
     return from_id, to_id
 
 
+def isWin():
+    return col_2 == SOLVED_COL or col_3 == SOLVED_COL
+
+
 def colFromId(tower_id):
     match tower_id:
         case 1:
@@ -116,12 +123,18 @@ def towerOfHanoi():
     while not isGameSolved:
         printTowers()
         input = playerInput()
+
         col_from = colFromId(input[0])
-        print(col_from)
         col_to = colFromId(input[1])
-        print(col_to)
+
         if not moveDisk(col_from, col_to):
             print("failed to move disk")
+
+        if isWin():
+            print("Cogtatulations🎉🎉🎉")
+            return
+
+        os.system("cls")
 
 
 towerOfHanoi()
