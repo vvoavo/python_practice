@@ -210,6 +210,7 @@ class BlackJack:
             if user_input == 1:
                 self._player_hand.addCard(self._deck.pullCard())
             if user_input == 2:
+                os.system("cls")
                 player_score = self._player_hand.getTotalValue()
                 dealer_score = self._dealer_hand.getTotalValue()
                 if player_score > dealer_score:
